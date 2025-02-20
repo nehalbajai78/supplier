@@ -40,6 +40,7 @@ import UserLogin from './features/auth/UserLogin';
 // import BuyerscreeingAptwo from './features/ap_2/BuyerscreeingAptwo';
 // import PaymentAptwo from './features/ap_2/PaymentAptwo';
 // import RatingAptwo from './features/ap_2/RatingAptwo';
+// 
 import Signup from './features/signup/Signup';
 import SignupnoForm from './features/signup/SignupnoForm';
 import ForgatePage from './features/forotPassword/ForgatePage';
