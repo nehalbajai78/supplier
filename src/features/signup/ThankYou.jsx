@@ -27,9 +27,9 @@ function ThankYou() {
         <br />
         <span className="color-green mt-50">Thank You!</span>
       </h3>
-      {/* <p className="fs-16 color-grey mt-10">
-        Email to the supplier has been sent for account creation.{" "}
-      </p> */}
+      <p className="fs-16 color-grey mt-10">
+      for showing interest in doing business with Escorts Kubota . An email has been sent to the corresponding Escorts Kubota Buyer.
+      </p>
       <button
         className="btn btn-lg pull-right mt-60"
        onClick={handleClick}

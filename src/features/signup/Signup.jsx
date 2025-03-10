@@ -1,46 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { validateBuyer ,productCategory } from "./signUpSlice";
 
 function Signup() {
+  console.log("Rendering signup page");
+
   const navigate = useNavigate();
-  const [showEmailInput, setShowEmailInput] = useState(true); 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [selectedOption, setSelectedOption] = useState("Yes");
+  const dispatch = useDispatch();
+  const { signUpStatus, buyerError } = useSelector((state) => state.signUp);
 
-  const dummyUser = {
-    email: "Nehalvajpai17@gmail.com",
-   
-  };
-
-  // Handles select dropdown change
-  const handleSelectChange = (e) => {
-    const value = e.target.value;
-    setSelectedOption(value);
-    setShowEmailInput(value === "Yes"); 
-  };
-
-  // Handles login validation
-  const handleLogin = () => {
-    if (email === dummyUser.email ) {
-      // alert("Login successful! Redirecting...");
-      navigate("/signUpYesForm"); 
-    } else {
-      alert("Invalid email or password! Please try again.");
-    }
-  };
+  const [selectedOption, setSelectedOption] = useState("yes");
+  const [buyerEmail, setBuyerEmail] = useState("");
+  const [buyerErrEmail, setBuyerErrEmail] = useState("");
 
  
-  const handleClick = () => {
-    navigate("/signupno");
+  const handleSelectChange = (event) => {
+    const value = event.target.value // Convert to lowercase
+    setSelectedOption(value);
+    console.log("Selected option:", value);
+
+    
   };
 
+
+  // Update error message when signUpStatus changes
+  useEffect(() => {
+    setBuyerErrEmail(buyerError);
+  }, [signUpStatus]);
+  console.log("buyerEmailErrMsg",buyerErrEmail);
   
-  const handleContinue = () => {
-    if (selectedOption === "Yes") {
-      handleLogin(); 
-    } else {
-      handleClick();     }
+
+  // Clear error when buyerEmail changes
+  useEffect(() => {
+    setBuyerErrEmail("");
+  }, [buyerEmail]);
+
+  // Navigate when signUpStatus is "vbsuccess" and email is entered
+  useEffect(() => {
+    console.log("status",signUpStatus);
+    
+    if (signUpStatus === "vbsuccess" && buyerEmail !== "") {
+      navigate("/signUpYesForm");
+    }
+  }, [signUpStatus]);
+
+  const ClickContinue = () => {
+    if (selectedOption === "yes") {
+     
+      dispatch(validateBuyer({ buyerEmail }));
+    }
+    else {
+      dispatch(productCategory({}))
+      navigate("/signUpNoForm"); 
+    }
   };
 
   return (
@@ -53,76 +66,63 @@ function Signup() {
                 <img src="images/ic-back.png" width="40px" alt="Back" />
               </a>
             </div>
-            <div className="" style={{ textAlign: "center", marginTop: "10rem" }}>
+            <div style={{ textAlign: "center", marginTop: "10rem" }}>
               <h3 className="color-black">Sign Up</h3>
             </div>
           </section>
+
           <section className="width-full bg-white minH-100vh">
             <div className="mt-80 pt-60 pl-100 pr-100">
               <div className="mb-50 col-sm-5">
                 <div className="pr-0 form-group mt-40">
                   <label className="field-title mb-5">
-                    Do You Know Your Buyer's Email
+                    Do You Know Your Buyer's Email?
                   </label>
                   <div className="select">
-                    <select required onChange={handleSelectChange} value={selectedOption}>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
+                    <select value={selectedOption} onChange={handleSelectChange}>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </div>
                 </div>
 
-                {/* Conditionally Render Email Input */}
-                {showEmailInput && (
-                  <div className="pl-0 mt-40 form-group">
-                    <label className="field-title mb-5">BUYER EMAIL ID</label>
+                {/* Show Email Input Only If "Yes" is Selected */}
+                {selectedOption === "yes" && (
+                  <div>
+                    <label className="field-title mb-5 mt-40">BUYER EMAIL ID</label>
                     <input
                       type="text"
                       placeholder="Enter Email Address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={buyerEmail}
+                      onChange={(e) => setBuyerEmail(e.target.value)}
                     />
-                    {/* <label className="field-title mt-40">PASSWORD</label>
-                    <input
-                      type="password"
-                      placeholder="Enter Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    /> */}
-                    {/* <div className="form-group col-sm-12 pl-0 mt-40">
-                      <div className="terms-condition-sec">
-                        <h6>Terms &amp; Conditions</h6>
-                      </div>
-                      <div className="mt-20 mb-10" style={{ display: "flex", alignItems: "center" }}>
-                        <div className="checkboxes">
-                          <label>
-                            <input type="checkbox" name="type" />
-                            <span className="checkbox mr-10" />
-                          </label>
-                        </div>
-                        <div>Terms &amp; Conditions</div>
-                      </div>
-                    </div> */}
+                   
+                      <span className=" fs-14 error-lS" style={{color:"red"}}>
+                        {buyerErrEmail}
+                      </span>
+                   
                   </div>
                 )}
-
-                <div className="clear" />
               </div>
-
-              <div className="vendor-requests">
-                <div className="clear" />
-                <div className="text-right mb-40" style={{ marginTop: "20rem" }}>
+             <div className="clear"/>
+          <div className="vendor-requests">
+                <div className="text-right mb-40"  >
                   <button
                     className="btn btn-lg btn-red-thin-stroked color-red fs-16"
-                    onClick={handleContinue} // Call appropriate function based on selection
+                    onClick={ClickContinue}
                   >
                     CONTINUE
                   </button>
                 </div>
               </div>
-            </div>
+      </div>
+              
+           
+          
           </section>
+        
         </section>
+     
       </main>
     </>
   );

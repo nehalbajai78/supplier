@@ -19,7 +19,7 @@ import AccountCreation from './features/supplier_details/AccountCreation';
 import AccountCreationOne from './features/supplier_details/AccontCreationOne';
 import AccountCreationTwo from './features/supplier_details/AccountCreationTwo';
 import SupplierDetails from './features/supplier_details/SupplierDetails';
-import ThankYou from './features/supplier_details/ThankyouOne';
+import ThankYouNo from './features/signup/ThankYou';
 import ThankYouOne from './features/supplier_details/ThankyouOne';
 import UserLogin from './features/auth/UserLogin';
 // import BuyerScreingBu from './features/buyer/BuyerScreeingBu';
@@ -43,33 +43,75 @@ import UserLogin from './features/auth/UserLogin';
 // 
 import Signup from './features/signup/Signup';
 import SignupnoForm from './features/signup/SignupnoForm';
-import ForgatePage from './features/forotPassword/ForgatePage';
-import ForgateOtp from './features/forotPassword/ForgateOtp';
+// import ForgatePage from './features/forotPassword/ForgotePwd';
+import ForgateOtp from './features/forotPassword/ResetOtp';
+import SignUpYesForm from './features/signup/SignupyesForm';
+import TermsCondition from './features/signup/TermsCondition';
+import ThankYouSu from "./features/signup/ThankYou"
+import TyWithResendLink from './features/signup/TyWithResendLink';
+import ThankYou from './features/signup/ThankYou';
+import SendOtp from './features/forotPassword/SendOtp';
+import Testing from './features/forotPassword/Testing';
+import ResetOtp from './features/forotPassword/ResetOtp';
+import ForgatePwd from './features/forotPassword/ForgotePwd';
+
 const router = createBrowserRouter(
   [
+    {
+      path:'/test',
+      element:<Testing />,
+    },
   {
     path:'/dashboard',
     element:<Maindashboard />,
   },
   {
+    path:'/thankyou',
+    element:<ThankYou />,
+  },
+ 
+  {
     path:'/',
     element:<UserLogin />,
   },
+  // forgote pssword
   {
-    path:'/forgoteotp',
-    element:<ForgateOtp />,
+    path:'/resetotp',
+    element:<ResetOtp />,
   },
   {
     path:'/forgotPWD',
-    element:<ForgatePage />,
+    element:<ForgatePwd />,
   },
   {
-    path:'/signupno',
-    element:<SignupnoForm />,
+    path:'/sendOtp',
+    element:<SendOtp />,
   },
+  // singup
+ 
   {
     path:'/signup',
     element:<Signup />,
+  },
+  {
+    path:'/signUpNoForm',
+    element:<SignupnoForm />,
+  },
+  {
+    path:'/signUpYesForm',
+    element:<SignUpYesForm />,
+  },
+  {
+    path:'/termsAndCondition',
+    element:<TermsCondition />,
+  },
+  {
+    path:'/thankyousu',
+    element:<ThankYouSu />,
+  },
+  {
+    path:'/tywithresendlink',
+    element:<TyWithResendLink />,
   },
   // supplier
   // {
