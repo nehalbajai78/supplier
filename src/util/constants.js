@@ -16,9 +16,13 @@ BUYERUNKNOWN_SIGNUP_ENDPOINT:"/register",
 RESEND_LINK_ENDPOINT:"/resendlink",
 
 // error text 
-
 FIELD_MANDATORY_MSG:"Field is mandatory, Please provide mandatory fields",
 
+// auth end points
+LOGIN_ENDPOINT:"/login",
+VALIDATE_OTP_ENDPOINT:"/validate-otp",
+EMAIL_VERIFICATION:"/activation",
+LOGOUT_ENDPOINT:"/logout",
 // forgate password
 FORGOT_PASSWORD_ENDPOINT:"/forgot",
 FORGOT_VALIDATE_OTP_ENDPOINT:"/validate-otp",

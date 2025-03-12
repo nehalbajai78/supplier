@@ -85,8 +85,6 @@ function SignupnoForm() {
                     type="text"
                     name="name"
                     placeholder="Enter Company Name"
-                  
-                   
                   />
                   
                 </div>

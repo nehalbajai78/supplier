@@ -1,11 +1,13 @@
 import React from 'react'
+import Header from './Header'
 
 function Maindashboard() {
   return (
     <>
       <main id="wrapper" style={{ background: "#fff" }}>
   {/*Header*/}
-  <div ui-view="header">
+  <Header/>
+  {/* <div ui-view="header">
     <header hide-in-app="">
       <nav className="navbar navbar-default">
         <div className="container-fluid large-menu">
@@ -25,7 +27,7 @@ function Maindashboard() {
         </div>
       </nav>
     </header>
-  </div>
+  </div> */}
   {/*Header*/}
   {/*Content*/}
   <section className="container " style={{marginBottom:"15rem" , background: "#fff"}}>

@@ -3,6 +3,7 @@ import { persistStore, persistReducer, REGISTER, REHYDRATE, PERSIST } from "redu
 import storage from "redux-persist/lib/storage"; // Stores data in localStorage
 import signUpReducer from './features/signup/signUpSlice'
 import forgotReducer from "./features/forotPassword/forgotSlice"
+import authReducer from './features/auth/authSlice'
 // Import your reducers
 // import authReducer from "./authSlice"; // Example reducer
 // import userReducer from "./userSlice"; // Example reducer
@@ -15,7 +16,7 @@ const persistConfig = {
 
 // Combine multiple reducers
 const rootReducer = combineReducers({
-
+auth:authReducer,
 forgot:forgotReducer,
 signUp:signUpReducer
 });

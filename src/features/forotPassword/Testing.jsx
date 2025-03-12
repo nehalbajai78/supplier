@@ -12,9 +12,9 @@ function Testing() {
   const handleApiCall = async () => {
     try {
       const response = await fetch(
-        "/api/partner/api/v1/auth/validate-otp",
+        "/api/partner/api/v1/auth/forgot",
         // "/api/partner/api/v1/account/validate-buyer"
-       //8080/partner/api/v1/auth/forgot
+       //8080/partner/api/v1/auth/forgot/validate-otp
         {
           method: "POST",
           headers: {
@@ -41,6 +41,36 @@ function Testing() {
     }
   };
 
+  // const handleApiCall = async () => {
+  //   try {
+     
+      
+  //     const response = await fetch(
+  //       `/api/partner/api/v1/auth/logout`, // Pass data as query params
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           // "Content-Type": "application/json",
+  //           "x-forwarded-host": "localhost:8080",
+  //         },
+  //       }
+  //     );
+  
+  //     // const data = await response.json();
+  
+  //     if (response.ok) {
+  //       setSuccessMessage("Buyer validated successfully!");
+  //       setErrorMessage("");
+  //     } else {
+  //       setErrorMessage(data.message || "Validation failed!");
+  //       setSuccessMessage("");
+  //     }
+  //   } catch (error) {
+  //     setErrorMessage("Error occurred while validating buyer.");
+  //     console.error("API error:", error);
+  //   }
+  // };
+  
   return (
     <>
       <main id="wrapper">

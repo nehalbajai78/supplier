@@ -29,17 +29,17 @@ function SendOtp() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(username, otp);
-    if (otp === "") {
-      setOtp(CONSTANTS.FIELD_MANDATORY_MSG);
-      return;
-    } 
+    // if (otp === "") {
+    //   setOtp(CONSTANTS.FIELD_MANDATORY_MSG);
+    //   return;
+    // } 
     // encrypt
     const iv = generateRandomIv();
     const salt = generateRandomSalt();
     const cipherText = encrypt(otp, iv, salt);
     const aesOtp = iv + "::" + salt + "::" + cipherText;
     console.log("Aes Password String :" + aesOtp);
-    dispatch(sendOtp({ username, otp: aesOtp, journey: "FP" }));
+    dispatch(sendOtp({ username, otp, journey: "FP" }));
   };
 
   return (
@@ -71,7 +71,7 @@ function SendOtp() {
                   />
                   {otpErrMsg !== "" && (
                     <div>
-                      <span className="color-red fs-14 error-lS">
+                      <span className=" fs-14 error-lS" style={{color:"red"}}>
                         {otpErrMsg}
                       </span>
                     </div>

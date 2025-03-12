@@ -54,6 +54,7 @@ import SendOtp from './features/forotPassword/SendOtp';
 import Testing from './features/forotPassword/Testing';
 import ResetOtp from './features/forotPassword/ResetOtp';
 import ForgatePwd from './features/forotPassword/ForgotePwd';
+import ValidateOtp from './features/auth/ValidateOtp';
 
 const router = createBrowserRouter(
   [
@@ -73,6 +74,10 @@ const router = createBrowserRouter(
   {
     path:'/',
     element:<UserLogin />,
+  },
+  {
+    path:'/validate-otp',
+    element:<ValidateOtp />,
   },
   // forgote pssword
   {
